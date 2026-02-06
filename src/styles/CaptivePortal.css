@@ -1,0 +1,346 @@
+/* Captive Portal - CSS Puro */
+
+.captive-portal {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, hsl(145, 63%, 20%) 0%, hsl(145, 63%, 32%) 50%, hsl(145, 50%, 40%) 100%);
+}
+
+.captive-portal__header {
+  background: hsl(145, 63%, 15%);
+  padding: 1rem 2rem;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.captive-portal__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.captive-portal__logo-icon {
+  width: 50px;
+  padding: 5px;
+  height: 50px;
+  background: hsl(48, 100%, 50%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.captive-portal__logo-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: hsl(145, 63%, 15%);
+}
+
+.captive-portal__logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.captive-portal__logo-title {
+  font-size: 0.75rem;
+  color: hsl(0, 0%, 80%);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.captive-portal__logo-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  line-height: 1;
+}
+
+.captive-portal__logo-slogan {
+  font-size: 0.875rem;
+  color: hsl(48, 100%, 50%);
+  font-style: italic;
+}
+
+.captive-portal__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .captive-portal__main {
+    flex-direction: row;
+    justify-content: center;
+    padding: 3rem 2rem;
+    gap: 4rem;
+  }
+}
+
+/* Carrossel */
+.carousel {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+
+.carousel__container {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  background: hsl(145, 63%, 10%);
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel__slide {
+  min-width: 100%;
+  aspect-ratio: 1130 / 1600;
+}
+
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.carousel__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: hsla(0, 0%, 100%, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel__dot:hover {
+  background: hsla(0, 0%, 100%, 0.6);
+}
+
+.carousel__dot--active {
+  background: hsl(48, 100%, 50%);
+  transform: scale(1.2);
+}
+
+.carousel__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: hsla(145, 63%, 15%, 0.8);
+  border: 2px solid hsl(48, 100%, 50%);
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.carousel__nav:hover {
+  background: hsl(145, 63%, 25%);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel__nav--prev {
+  left: 0.5rem;
+}
+
+.carousel__nav--next {
+  right: 0.5rem;
+}
+
+/* Formulário */
+.login-form {
+  width: 100%;
+  max-width: 420px;
+  background: hsl(0, 0%, 100%);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.login-form__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-form__wifi-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, hsl(145, 63%, 32%) 0%, hsl(145, 63%, 45%) 100%);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 20px hsla(145, 63%, 32%, 0.4);
+}
+
+.login-form__wifi-icon svg {
+  width: 32px;
+  height: 32px;
+  color: hsl(0, 0%, 100%);
+}
+
+.login-form__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(145, 63%, 20%);
+  margin-bottom: 0.5rem;
+}
+
+.login-form__subtitle {
+  font-size: 0.875rem;
+  color: hsl(145, 30%, 45%);
+}
+
+.login-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(145, 63%, 25%);
+}
+
+.form-group__input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid hsl(145, 30%, 85%);
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  color: hsl(145, 63%, 15%);
+  background: hsl(145, 20%, 98%);
+  transition: all 0.3s ease;
+}
+
+.form-group__input:focus {
+  outline: none;
+  border-color: hsl(145, 63%, 40%);
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 0 0 4px hsla(145, 63%, 40%, 0.15);
+}
+
+.form-group__input::placeholder {
+  color: hsl(145, 20%, 60%);
+}
+
+.form-group__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group__error {
+  font-size: 0.75rem;
+  color: hsl(0, 70%, 50%);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.login-form__submit {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, hsl(145, 63%, 32%) 0%, hsl(145, 63%, 40%) 100%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px hsla(145, 63%, 32%, 0.4);
+}
+
+.login-form__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px hsla(145, 63%, 32%, 0.5);
+}
+
+.login-form__submit:active {
+  transform: translateY(0);
+}
+
+.login-form__footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid hsl(145, 30%, 90%);
+  text-align: center;
+}
+
+.login-form__terms {
+  font-size: 0.75rem;
+  color: hsl(145, 20%, 50%);
+  line-height: 1.5;
+}
+
+.login-form__terms a {
+  color: hsl(145, 63%, 35%);
+  text-decoration: underline;
+}
+
+/* Footer */
+.captive-portal__footer {
+  background: hsl(145, 63%, 12%);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: hsl(0, 0%, 80%);
+  font-size: 0.875rem;
+}
+
+.captive-portal__footer-highlight {
+  color: hsl(48, 100%, 50%);
+  font-weight: 600;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.carousel {
+  animation: fadeIn 0.6s ease-out 0.2s both;
+}
