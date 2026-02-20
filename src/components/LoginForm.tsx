@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { toast } from "sonner";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../lib/firebase";
 
 const motivosOptions = ["Trabalho", "Lazer", "Estudo", "Emergência"] as const;
 
@@ -43,17 +45,13 @@ const LoginForm = () => {
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+      const docRef = await addDoc(collection(db, "connections"), {
+        nome: data.nome,
+        idade: Number(data.idade),
+        motivo_conexao: data.motivo,
+        data_conexao: new Date().toISOString()
       });
-
-      if (!response.ok) {
-        throw new Error("Erro ao enviar os dados");
-      }
+      console.log("Document written with ID: ", docRef.id);
 
       toast.success(`Bem-vindo(a), ${data.nome}! Você será conectado em instantes.`);
       reset();
