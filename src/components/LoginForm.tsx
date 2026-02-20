@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const motivosOptions = ["Trabalho", "Lazer", "Estudo", "Emergência"] as const;
 
@@ -27,6 +29,8 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -36,12 +40,29 @@ const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log("Dados do formulário:", data);
-    alert(
-      `Bem-vindo(a), ${data.nome}! Você será conectado à internet em instantes.`,
-    );
-    reset();
+  const onSubmit = async (data: LoginFormData) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao enviar os dados");
+      }
+
+      toast.success(`Bem-vindo(a), ${data.nome}! Você será conectado em instantes.`);
+      reset();
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Houve um problema ao conectar. Tente novamente.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -149,8 +170,12 @@ const LoginForm = () => {
           )}
         </div>
 
-        <button type="submit" className="login-form__submit">
-          Conectar à Internet
+        <button
+          type="submit"
+          className="login-form__submit"
+          disabled={isLoading}
+        >
+          {isLoading ? "Conectando..." : "Conectar à Internet"}
         </button>
       </div>
 
